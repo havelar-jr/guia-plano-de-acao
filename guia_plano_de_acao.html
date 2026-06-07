@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Prático — Como Construir e Vender um Plano de Ação</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --azul:#1A2FFF;
+    --azul-escuro:#060F3D;
+    --azul-claro:#5B8BFF;
+    --off:#F5F3EE;
+    --ink:#0D0D0D;
+    --verde:#00A854;
+    --amber:#C47000;
+    --linha:rgba(13,13,13,.10);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--off);
+    color:var(--ink);
+    font-family:'DM Sans',sans-serif;
+    font-weight:400;
+    line-height:1.65;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:0 28px}
+
+  /* CAPA */
+  .capa{
+    background:var(--azul-escuro);
+    color:#fff;
+    padding:96px 28px 88px;
+    position:relative;
+    overflow:hidden;
+  }
+  .capa::after{
+    content:"";
+    position:absolute;
+    right:-120px;top:-120px;
+    width:420px;height:420px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(26,47,255,.55), transparent 70%);
+  }
+  .capa .inner{max-width:860px;margin:0 auto;position:relative;z-index:2}
+  .kicker{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    font-size:12px;
+    color:var(--azul-claro);
+    margin-bottom:24px;
+  }
+  .capa h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:clamp(34px,6vw,54px);
+    line-height:1.06;
+    letter-spacing:-.02em;
+    margin-bottom:20px;
+  }
+  .capa .sub{
+    font-size:19px;
+    color:rgba(255,255,255,.78);
+    max-width:620px;
+    font-weight:300;
+  }
+  .capa .fases-capa{
+    display:flex;flex-wrap:wrap;gap:10px;margin-top:40px;
+  }
+  .capa .fases-capa span{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:13px;font-weight:500;
+    padding:8px 16px;
+    border:1px solid rgba(255,255,255,.22);
+    border-radius:100px;
+    color:rgba(255,255,255,.85);
+  }
+
+  /* REGRA DE OURO */
+  .ouro{
+    background:var(--azul);
+    color:#fff;
+    padding:44px 0;
+  }
+  .ouro .inner{max-width:860px;margin:0 auto;padding:0 28px;display:flex;gap:24px;align-items:flex-start}
+  .ouro .mark{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:48px;font-weight:700;line-height:1;
+    color:rgba(255,255,255,.45);
+    flex-shrink:0;
+  }
+  .ouro h3{font-family:'Space Grotesk',sans-serif;font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;font-weight:600}
+  .ouro p{font-size:18px;font-weight:300;color:rgba(255,255,255,.92)}
+
+  /* SECOES */
+  section.fase{padding:64px 0 8px}
+  .fase-head{display:flex;align-items:baseline;gap:18px;margin-bottom:8px}
+  .fase-num{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:15px;font-weight:700;
+    color:#fff;background:var(--azul);
+    width:46px;height:46px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .fase h2{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;font-size:clamp(26px,4vw,34px);
+    letter-spacing:-.015em;line-height:1.1;
+  }
+  .objetivo{
+    color:var(--azul);
+    font-weight:500;
+    font-size:16px;
+    margin:6px 0 28px 64px;
+    font-family:'Space Grotesk',sans-serif;
+  }
+  .fase h4{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;font-size:18px;
+    margin:30px 0 14px;
+    letter-spacing:-.01em;
+  }
+  ol.passos{list-style:none;counter-reset:p;margin:0 0 8px}
+  ol.passos li{
+    counter-increment:p;
+    position:relative;
+    padding:10px 0 10px 44px;
+    border-bottom:1px solid var(--linha);
+  }
+  ol.passos li:last-child{border-bottom:none}
+  ol.passos li::before{
+    content:counter(p);
+    position:absolute;left:0;top:11px;
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;font-size:13px;
+    color:var(--azul);
+    border:1.5px solid var(--azul);
+    width:28px;height:28px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .box{
+    background:#fff;
+    border:1px solid var(--linha);
+    border-radius:16px;
+    padding:24px 26px;
+    margin:18px 0;
+  }
+  .box.azul{border-left:4px solid var(--azul)}
+  .box h4{margin-top:0}
+  ul.clean{list-style:none}
+  ul.clean li{
+    position:relative;padding:7px 0 7px 22px;
+  }
+  ul.clean li::before{
+    content:"";position:absolute;left:0;top:16px;
+    width:7px;height:7px;border-radius:50%;background:var(--azul);
+  }
+  .entregavel{
+    display:flex;gap:14px;align-items:center;
+    background:rgba(26,47,255,.06);
+    border-radius:12px;
+    padding:16px 20px;
+    margin:24px 0 8px;
+    font-size:15px;
+  }
+  .entregavel .tag{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;font-size:11px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--azul);
+    flex-shrink:0;
+  }
+  .entregavel .ex{font-style:normal;color:#444}
+
+  /* TABELAS */
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:15px}
+  thead th{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+    text-align:left;padding:14px 16px;
+    background:var(--azul-escuro);color:#fff;
+  }
+  thead th:first-child{border-radius:10px 0 0 0}
+  thead th:last-child{border-radius:0 10px 0 0}
+  tbody td{padding:14px 16px;border-bottom:1px solid var(--linha);vertical-align:top}
+  tbody tr:nth-child(even){background:rgba(13,13,13,.02)}
+  tbody td:first-child{color:#666}
+  tbody td:last-child{font-weight:500}
+
+  .horizontes{display:grid;gap:14px;margin:16px 0}
+  .hz{background:#fff;border:1px solid var(--linha);border-radius:14px;padding:20px 22px}
+  .hz .lab{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;
+    font-size:13px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--azul);margin-bottom:6px;
+  }
+  .hz.agora{border-left:4px solid var(--verde)}
+  .hz.curto{border-left:4px solid var(--amber)}
+  .hz.estr{border-left:4px solid var(--azul)}
+
+  .orbit{background:var(--azul-escuro);color:#fff;border-radius:18px;padding:34px 32px;margin:24px 0}
+  .orbit .kicker{margin-bottom:14px}
+  .orbit h4{color:#fff}
+  .orbit ul.clean li::before{background:var(--azul-claro)}
+  .orbit .nivel{margin:14px 0}
+  .orbit .nivel b{font-family:'Space Grotesk',sans-serif;color:var(--azul-claro)}
+  .orbit .ressalva{
+    margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.16);
+    font-size:14px;color:rgba(255,255,255,.7);font-style:normal;
+  }
+
+  /* RESUMO */
+  .resumo{background:var(--azul);color:#fff;padding:64px 0;margin-top:64px}
+  .resumo .inner{max-width:860px;margin:0 auto;padding:0 28px}
+  .resumo .kicker{color:rgba(255,255,255,.7)}
+  .resumo h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:28px;margin-bottom:28px;letter-spacing:-.015em}
+  .fluxo{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:28px}
+  .fluxo .et{
+    background:rgba(255,255,255,.12);
+    border-radius:10px;padding:12px 16px;
+    font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:14px;
+  }
+  .fluxo .ar{color:rgba(255,255,255,.5);font-size:18px}
+  .resumo .punch{font-size:20px;font-weight:300;color:rgba(255,255,255,.95);max-width:640px}
+  .resumo .punch b{font-weight:600;font-family:'Space Grotesk',sans-serif}
+
+  footer{padding:40px 28px;text-align:center;color:#999;font-size:13px}
+  footer b{color:var(--azul);font-family:'Space Grotesk',sans-serif;font-weight:600}
+
+  @media(max-width:600px){
+    body{font-size:16px}
+    .objetivo{margin-left:0}
+    .ouro .inner{flex-direction:column;gap:12px}
+    table{font-size:13px}
+    thead th,tbody td{padding:10px 10px}
+  }
+</style>
+</head>
+<body>
+
+<header class="capa">
+  <div class="inner">
+    <div class="kicker">Guia Prático · Metodologia</div>
+    <h1>Como construir e vender<br>um plano de ação</h1>
+    <p class="sub">Do diagnóstico à proposta, em quatro fases. Um caminho estruturado para sair do "eu sei o que está errado" para uma proposta que o decisor compra.</p>
+    <div class="fases-capa">
+      <span>01 · Discovery</span>
+      <span>02 · Avaliação</span>
+      <span>03 · Síntese e Planejamento</span>
+      <span>04 · Relatório e Venda</span>
+    </div>
+  </div>
+</header>
+
+<div class="ouro">
+  <div class="inner">
+    <div class="mark">!</div>
+    <div>
+      <h3>A regra de ouro</h3>
+      <p>A venda não acontece na entrega da proposta. Ela acontece na qualidade com que você aperta o problema lá no início. Quanto mais claro e doloroso ficar o problema real, mais óbvia fica a compra da solução. Não pule a Fase 1.</p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- FASE 1 -->
+  <section class="fase">
+    <div class="fase-head">
+      <div class="fase-num">01</div>
+      <h2>Discovery</h2>
+    </div>
+    <div class="objetivo">Objetivo: sair do sintoma e chegar na causa raiz.</div>
+
+    <h4>Passos</h4>
+    <ol class="passos">
+      <li>Liste tudo que você enxerga de errado, sem filtro. Essa é sua lista de <b>sintomas</b>.</li>
+      <li>Para cada item, pergunte "por que isso acontece?" três vezes seguidas. A terceira resposta costuma ser a causa raiz.</li>
+      <li>Identifique quem decide de fato. Numa PME, o poder real raramente segue o organograma. Toda a proposta vai falar com esse decisor.</li>
+      <li>Colete de 2 a 3 evidências concretas. Não precisa de planilha sofisticada. Serve: turnover, retrabalho, prazo estourado, reclamação recorrente, gente desmotivada.</li>
+    </ol>
+
+    <div class="box azul">
+      <h4>Roteiro de perguntas para o Discovery</h4>
+      <ul class="clean">
+        <li>O que mais trava o dia a dia aqui?</li>
+        <li>Quando algo dá errado, o que costuma estar na origem?</li>
+        <li>Como as decisões são tomadas e quem participa?</li>
+        <li>O que cada líder faria diferente se pudesse?</li>
+        <li>O que já tentaram antes e não funcionou?</li>
+      </ul>
+    </div>
+
+    <div class="entregavel">
+      <span class="tag">Entregável</span>
+      <span>Uma frase única que define o problema central. <span class="ex">Ex: "Decisão centralizada no gerente que paralisa o time e gera retrabalho."</span></span>
+    </div>
+  </section>
+
+  <!-- FASE 2 -->
+  <section class="fase">
+    <div class="fase-head">
+      <div class="fase-num">02</div>
+      <h2>Avaliação</h2>
+    </div>
+    <div class="objetivo">Objetivo: transformar percepção em estrutura visual e vendável.</div>
+
+    <h4>Passos</h4>
+    <ol class="passos">
+      <li>Faça entrevistas com os líderes, mesmo que informais, mas com roteiro. Nada de conversa solta.</li>
+      <li>Organize os achados em blocos: como as decisões são tomadas, como a informação circula, o que trava, o que cada um mudaria.</li>
+      <li>Monte a Matriz De-Para, seu instrumento mais poderoso de venda. É o que faz o decisor enxergar valor sem precisar entender de metodologia.</li>
+      <li>Priorize de 3 a 5 gaps. Não tente resolver tudo. Foque no que dói mais e no que tem solução viável.</li>
+    </ol>
+
+    <h4>Modelo da Matriz De-Para</h4>
+    <table>
+      <thead><tr><th>Como é hoje</th><th>Como fica com o plano</th></tr></thead>
+      <tbody>
+        <tr><td>Decisão concentrada no gerente</td><td>Decisão delegada com critério claro</td></tr>
+        <tr><td>Comunicação por imposição</td><td>Ritual de alinhamento semanal</td></tr>
+        <tr><td>Coisas acontecem quando o chefe quer</td><td>Fluxo com prazo, dono e acompanhamento</td></tr>
+        <tr><td>Sem escuta ativa</td><td>Espaço estruturado de feedback</td></tr>
+      </tbody>
+    </table>
+
+    <div class="entregavel">
+      <span class="tag">Entregável</span>
+      <span>Matriz De-Para preenchida mais lista de 3 a 5 gaps priorizados.</span>
+    </div>
+  </section>
+
+  <!-- FASE 3 -->
+  <section class="fase">
+    <div class="fase-head">
+      <div class="fase-num">03</div>
+      <h2>Síntese e Planejamento</h2>
+    </div>
+    <div class="objetivo">Objetivo: organizar as ações numa estrutura que o decisor compra.</div>
+
+    <h4>Estrutura da proposta (use nesta ordem)</h4>
+    <ol class="passos">
+      <li><b>O que encontramos</b> — os fatos e números, sem culpar ninguém.</li>
+      <li><b>Por que isso é um problema</b> — impacto real: custo, prazo, gente saindo.</li>
+      <li><b>O que propomos</b> — as ações, organizadas por horizonte.</li>
+      <li><b>O que muda na prática</b> — a Matriz De-Para.</li>
+      <li><b>Quando</b> — roadmap em fases.</li>
+    </ol>
+
+    <h4>Organize as ações por horizonte de execução</h4>
+    <div class="horizontes">
+      <div class="hz agora">
+        <div class="lab">Para agora</div>
+        O que não depende de dinheiro nem ferramenta, só de postura e ritual. Exemplo: reunião semanal de alinhamento, toda decisão com dono e prazo.
+      </div>
+      <div class="hz curto">
+        <div class="lab">Curto prazo</div>
+        O que precisa de pequeno ajuste de processo.
+      </div>
+      <div class="hz estr">
+        <div class="lab">Estrutural</div>
+        O que muda a forma de gerir ao longo do tempo.
+      </div>
+    </div>
+
+    <div class="orbit">
+      <div class="kicker">Quando o plano envolve desenvolver a liderança · Método Orbit</div>
+      <p style="color:rgba(255,255,255,.82);font-weight:300;margin-bottom:8px">Se a causa raiz é comportamento de liderança, como um gerente que centraliza, proponha um caminho estruturado de desenvolvimento, não um treinamento solto.</p>
+
+      <div class="nivel">
+        <b>Diagnóstico de perfil primeiro (DISC).</b> Tira a conversa do campo pessoal ("você é autoritário") e leva para o estrutural ("seu perfil tende a centralizar, vamos trabalhar delegação"). Reduz resistência. Posicione como ferramenta de autoconhecimento, nunca como avaliação ou rótulo.
+      </div>
+
+      <div class="nivel">
+        <b>Plano 70-20-10 para cada líder:</b>
+        <ul class="clean" style="margin-top:8px">
+          <li><b>70% prática</b> — delegar uma decisão real com acompanhamento, conduzir um ritual de alinhamento, dar autonomia controlada a um liderado.</li>
+          <li><b>20% social</b> — mentoria entre os líderes, feedback entre pares.</li>
+          <li><b>10% formal</b> — conteúdo sobre delegação, escuta ativa e comunicação. Isolado, sem misturar com a prática.</li>
+        </ul>
+      </div>
+
+      <div class="nivel">
+        <b>Ciclo de check-ins.</b> Desenvolvimento não é evento, é acompanhamento. Encontros periódicos para revisar o que foi praticado, o que travou e o próximo passo.
+      </div>
+
+      <p class="ressalva">Ressalva: o DISC é um instrumento de desenvolvimento, não de avaliação ou decisão de RH. Numa cultura de controle, posicioná-lo como autoconhecimento é o que faz o gerente aceitar participar em vez de se sentir julgado.</p>
+    </div>
+
+    <div class="entregavel">
+      <span class="tag">Entregável</span>
+      <span>Documento da proposta com framing de decisão, não de teoria.</span>
+    </div>
+  </section>
+
+  <!-- FASE 4 -->
+  <section class="fase">
+    <div class="fase-head">
+      <div class="fase-num">04</div>
+      <h2>Relatório e Venda</h2>
+    </div>
+    <div class="objetivo">Objetivo: entregar uma proposta clara e conduzir a venda.</div>
+
+    <h4>Passos</h4>
+    <ol class="passos">
+      <li>Monte o documento com identidade visual mínima e estrutura limpa. Não precisa ser sofisticado, precisa ser claro. A lógica é sempre contexto, diagnóstico, recomendação, impacto, próximo passo.</li>
+      <li>Prepare uma narrativa de 2 minutos que conecta problema, impacto e solução. É isso que você fala antes de o decisor abrir o documento.</li>
+      <li>Deixe explícito o método que sustentou o plano. A metodologia, Discovery e Design Thinking, é o que dá credibilidade. O rigor do processo vende mais que qualquer ferramenta.</li>
+      <li>Feche com o próximo passo concreto: o que acontece se ele aprovar, qual a primeira ação, em quanto tempo.</li>
+    </ol>
+
+    <div class="entregavel">
+      <span class="tag">Entregável</span>
+      <span>Proposta pronta para apresentar mais narrativa de abertura de 2 minutos.</span>
+    </div>
+  </section>
+
+</div>
+
+<div class="resumo">
+  <div class="inner">
+    <div class="kicker">Resumo do caminho</div>
+    <h2>O caminho inteiro, de ponta a ponta</h2>
+    <div class="fluxo">
+      <span class="et">Discovery</span>
+      <span class="ar">&rarr;</span>
+      <span class="et">Avaliação</span>
+      <span class="ar">&rarr;</span>
+      <span class="et">Síntese</span>
+      <span class="ar">&rarr;</span>
+      <span class="et">Venda</span>
+    </div>
+    <p class="punch">A venda já estava ganha na Fase 1. <b>As outras três só tornam isso visível.</b></p>
+  </div>
+</div>
+
+<footer>
+  Guia construído com a metodologia de Discovery e Design Thinking · identidade <b>CX Presence</b>
+</footer>
+
+</body>
+</html>
