@@ -231,8 +231,43 @@
   .resumo .punch{font-size:20px;font-weight:300;color:rgba(255,255,255,.95);max-width:640px}
   .resumo .punch b{font-weight:600;font-family:'Space Grotesk',sans-serif}
 
+  /* APRENDIZAGEM */
+  .aprende{padding:64px 0 8px}
+  .aprende .kicker{color:var(--azul);margin-bottom:14px}
+  .aprende h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(26px,4vw,34px);letter-spacing:-.015em;margin-bottom:10px}
+  .aprende .intro{color:#555;max-width:640px;margin-bottom:36px;font-weight:300}
+  .met{
+    background:#fff;border:1px solid var(--linha);border-radius:16px;
+    padding:26px 28px;margin-bottom:18px;
+  }
+  .met-top{display:flex;align-items:baseline;gap:12px;margin-bottom:6px;flex-wrap:wrap}
+  .met h3{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:21px;letter-spacing:-.01em}
+  .met .onde{
+    font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--azul);
+    background:rgba(26,47,255,.08);padding:4px 10px;border-radius:100px;
+  }
+  .met .desc{color:#555;font-size:15px;margin-bottom:18px;font-weight:300}
+  .refs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .ref{
+    display:flex;gap:13px;align-items:flex-start;
+    background:var(--off);border-radius:11px;padding:14px 16px;
+  }
+  .ref .ic{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:11px;
+    letter-spacing:.06em;color:#fff;background:var(--azul-escuro);
+    padding:5px 8px;border-radius:7px;flex-shrink:0;margin-top:1px;
+  }
+  .ref .ic.yt{background:var(--azul)}
+  .ref .rtxt{font-size:14px;line-height:1.45}
+  .ref .rtxt .tt{font-weight:600;display:block;color:var(--ink)}
+  .ref .rtxt .au{color:#777;font-size:13px}
+  .ref a{color:var(--azul);text-decoration:none;font-weight:500}
+  .ref a:hover{text-decoration:underline}
+
   footer{padding:40px 28px;text-align:center;color:#999;font-size:13px}
   footer b{color:var(--azul);font-family:'Space Grotesk',sans-serif;font-weight:600}
+  @media(max-width:600px){.refs{grid-template-columns:1fr}}
 
   @media(max-width:600px){
     body{font-size:16px}
@@ -439,6 +474,86 @@
     </div>
     <p class="punch">A venda já estava ganha na Fase 1. <b>As outras três só tornam isso visível.</b></p>
   </div>
+</div>
+
+<div class="wrap">
+  <section class="aprende">
+    <div class="kicker">Para aprofundar</div>
+    <h2>Trilha de aprendizagem</h2>
+    <p class="intro">Cada metodologia usada neste guia tem uma fonte de origem e bom material disponível. Se quiser estudar por fora, aqui vai um livro e um vídeo para cada uma. Comece pelo que mais conversa com o seu desafio atual.</p>
+
+    <div class="met">
+      <div class="met-top">
+        <h3>Causa raiz (5 Whys)</h3>
+        <span class="onde">Usada na Fase 1</span>
+      </div>
+      <p class="desc">A técnica de perguntar "por que" sucessivas vezes até chegar na origem real do problema. Nasceu no sistema de produção da Toyota e é a base do Discovery deste guia.</p>
+      <div class="refs">
+        <div class="ref">
+          <span class="ic">Livro</span>
+          <span class="rtxt"><span class="tt">O Sistema Toyota de Produção</span><span class="au">Taiichi Ohno, criador da técnica dos 5 porquês</span></span>
+        </div>
+        <div class="ref">
+          <span class="ic yt">Vídeo</span>
+          <span class="rtxt"><span class="tt">5 Whys Root Cause Analysis</span><span class="au"><a href="https://www.youtube.com/results?search_query=5+whys+root+cause+analysis" target="_blank" rel="noopener">Buscar no YouTube</a> · canal GoLeanSixSigma ou Lean Enterprise</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="met">
+      <div class="met-top">
+        <h3>Design Thinking</h3>
+        <span class="onde">Usada nas Fases 1 e 4</span>
+      </div>
+      <p class="desc">Abordagem de resolução de problemas centrada nas pessoas, que estrutura a descoberta e dá credibilidade ao processo de venda do plano. Referência mundial em inovação aplicada a negócios.</p>
+      <div class="refs">
+        <div class="ref">
+          <span class="ic">Livro</span>
+          <span class="rtxt"><span class="tt">Design Thinking: Uma Metodologia Poderosa para Decretar o Fim das Velhas Ideias</span><span class="au">Tim Brown, CEO da IDEO</span></span>
+        </div>
+        <div class="ref">
+          <span class="ic yt">Vídeo</span>
+          <span class="rtxt"><span class="tt">Tim Brown: Designers, pensem grande</span><span class="au"><a href="https://www.ted.com/talks/tim_brown_designers_think_big" target="_blank" rel="noopener">TED Talk de Tim Brown</a></span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="met">
+      <div class="met-top">
+        <h3>Método 70-20-10</h3>
+        <span class="onde">Usada na Fase 3 (Orbit)</span>
+      </div>
+      <p class="desc">Modelo de desenvolvimento que distribui o aprendizado em 70% prática, 20% social e 10% formal. É o esqueleto do plano de desenvolvimento de liderança proposto ao cliente.</p>
+      <div class="refs">
+        <div class="ref">
+          <span class="ic">Livro</span>
+          <span class="rtxt"><span class="tt">The Career Architect Development Planner</span><span class="au">Lombardo e Eichinger, Center for Creative Leadership</span></span>
+        </div>
+        <div class="ref">
+          <span class="ic yt">Vídeo</span>
+          <span class="rtxt"><span class="tt">The 70:20:10 Framework</span><span class="au"><a href="https://www.youtube.com/results?search_query=70+20+10+learning+charles+jennings" target="_blank" rel="noopener">Buscar no YouTube</a> · palestras de Charles Jennings</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="met">
+      <div class="met-top">
+        <h3>DISC</h3>
+        <span class="onde">Usada na Fase 3 (Orbit)</span>
+      </div>
+      <p class="desc">Modelo de perfil comportamental em quatro dimensões: Dominância, Influência, Estabilidade e Conformidade. Serve para tirar a conversa de desenvolvimento do campo pessoal e levá-la para o estrutural. Use como ferramenta de autoconhecimento, não de avaliação.</p>
+      <div class="refs">
+        <div class="ref">
+          <span class="ic">Livro</span>
+          <span class="rtxt"><span class="tt">Emotions of Normal People</span><span class="au">William Moulton Marston, origem da teoria DISC (1928)</span></span>
+        </div>
+        <div class="ref">
+          <span class="ic yt">Vídeo</span>
+          <span class="rtxt"><span class="tt">DISC Personality Types Explained</span><span class="au"><a href="https://www.youtube.com/results?search_query=disc+personality+test+explained" target="_blank" rel="noopener">Buscar no YouTube</a> · introduções aos 4 perfis</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 
 <footer>
