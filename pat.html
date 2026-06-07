@@ -265,9 +265,94 @@
   .ref a{color:var(--azul);text-decoration:none;font-weight:500}
   .ref a:hover{text-decoration:underline}
 
+  /* NAV FIXO */
+  .topnav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(245,243,238,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--linha);
+  }
+  .topnav .inner{max-width:860px;margin:0 auto;padding:12px 28px;display:flex;gap:8px;align-items:center}
+  .topnav .brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:var(--azul);margin-right:auto;letter-spacing:-.01em}
+  .topnav a{
+    font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:13px;
+    color:var(--ink);text-decoration:none;padding:7px 14px;border-radius:100px;
+    transition:background .2s,color .2s;
+  }
+  .topnav a:hover{background:rgba(26,47,255,.08);color:var(--azul)}
+  .topnav a.ativo{background:var(--azul);color:#fff}
+
+  /* DIVISOR DE PARTE */
+  .parte-sep{
+    background:var(--azul);color:#fff;padding:18px 0;text-align:center;
+    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;
+    letter-spacing:.14em;text-transform:uppercase;
+  }
+
+  /* CHECKLIST */
+  .progresso{background:var(--azul-escuro);color:#fff;padding:24px 0}
+  .progresso .inner{max-width:860px;margin:0 auto;padding:0 28px;display:flex;align-items:center;gap:20px}
+  .progresso .txt{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;white-space:nowrap}
+  .barra{flex:1;height:10px;background:rgba(255,255,255,.20);border-radius:100px;overflow:hidden}
+  .barra .fill{height:100%;width:0%;background:var(--azul-claro);border-radius:100px;transition:width .35s ease}
+  .progresso .pct{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;min-width:48px;text-align:right}
+
+  .etapa{margin:40px 0}
+  .etapa-head{display:flex;align-items:center;gap:16px;margin-bottom:6px}
+  .etapa-num{
+    font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;
+    color:#fff;background:var(--azul);width:44px;height:44px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .etapa h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(22px,3.5vw,28px);letter-spacing:-.015em}
+  .prazo{
+    font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;
+    color:var(--amber);margin:0 0 18px 60px;display:inline-flex;align-items:center;gap:7px;
+  }
+  .prazo::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--amber)}
+  .checklist{list-style:none;margin:0 0 18px}
+  .item{
+    display:flex;align-items:flex-start;gap:14px;padding:13px 16px;margin-bottom:8px;
+    background:#fff;border:1px solid var(--linha);border-radius:12px;
+    cursor:pointer;transition:background .2s,border-color .2s;user-select:none;
+  }
+  .item:hover{border-color:var(--azul-claro)}
+  .item .cb{
+    width:24px;height:24px;border:2px solid var(--azul);border-radius:7px;
+    flex-shrink:0;margin-top:1px;position:relative;transition:background .2s;
+  }
+  .item .cb::after{
+    content:"";position:absolute;left:7px;top:3px;width:6px;height:11px;
+    border:solid #fff;border-width:0 2.5px 2.5px 0;
+    transform:rotate(45deg) scale(0);transition:transform .18s ease;
+  }
+  .item .lbl{font-size:16px;line-height:1.5}
+  .item.done{background:rgba(0,168,84,.06);border-color:rgba(0,168,84,.35)}
+  .item.done .cb{background:var(--verde);border-color:var(--verde)}
+  .item.done .cb::after{transform:rotate(45deg) scale(1)}
+  .item.done .lbl{color:#888;text-decoration:line-through;text-decoration-color:rgba(0,168,84,.5)}
+  .pronto{
+    display:flex;gap:12px;align-items:flex-start;
+    background:var(--azul-escuro);color:#fff;border-radius:12px;
+    padding:16px 20px;margin-left:60px;font-size:15px;
+  }
+  .pronto .tag{
+    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:11px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--azul-claro);
+    flex-shrink:0;margin-top:2px;
+  }
+  .pronto .obs{color:rgba(255,255,255,.7);font-size:14px;display:block;margin-top:6px}
+
   footer{padding:40px 28px;text-align:center;color:#999;font-size:13px}
   footer b{color:var(--azul);font-family:'Space Grotesk',sans-serif;font-weight:600}
-  @media(max-width:600px){.refs{grid-template-columns:1fr}}
+  @media(max-width:600px){
+    .refs{grid-template-columns:1fr}
+    .prazo,.pronto{margin-left:0}
+    .progresso .inner{flex-wrap:wrap;gap:12px}
+    .progresso .txt{white-space:normal}
+    .topnav .inner{flex-wrap:wrap;gap:6px}
+    .topnav .brand{width:100%;margin-bottom:4px}
+  }
 
   @media(max-width:600px){
     body{font-size:16px}
@@ -280,7 +365,15 @@
 </head>
 <body>
 
-<header class="capa">
+<nav class="topnav">
+  <div class="inner">
+    <span class="brand">Plano de Ação</span>
+    <a href="#guia" class="ativo">Guia</a>
+    <a href="#checklist">Checklist</a>
+  </div>
+</nav>
+
+<header class="capa" id="guia">
   <div class="inner">
     <div class="kicker">Guia Prático · Metodologia</div>
     <h1>Como construir e vender<br>um plano de ação</h1>
@@ -556,9 +649,137 @@
   </section>
 </div>
 
+<div class="parte-sep" id="checklist">Parte 2 · Checklist de Execução</div>
+
+<header class="capa">
+  <div class="inner">
+    <div class="kicker">Checklist de Execução</div>
+    <h1>O que fazer agora,<br>etapa por etapa</h1>
+    <p class="sub">Aqui o foco não é entender o método, é executar. Cada etapa tem prazo e um entregável que precisa estar pronto antes de avançar. Marque os itens conforme conclui.</p>
+  </div>
+</header>
+
+<div class="progresso">
+  <div class="inner">
+    <span class="txt">Progresso</span>
+    <div class="barra"><div class="fill" id="fill"></div></div>
+    <span class="pct" id="pct">0%</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="regra" style="margin-top:36px">
+    <p>A regra é <b>validar em camadas</b>. Não pule etapas para chegar mais rápido na proposta. Cada validação reduz o risco de construir algo que o cliente não compra.</p>
+  </div>
+
+  <section class="etapa">
+    <div class="etapa-head"><div class="etapa-num">01</div><h2>Discovery</h2></div>
+    <div class="prazo">Prazo sugerido: esta semana</div>
+    <ul class="checklist">
+      <li class="item"><span class="cb"></span><span class="lbl">Listar todos os sintomas que já enxerga, sem filtro</span></li>
+      <li class="item"><span class="cb"></span><span class="lbl">Aplicar o "por que?" três vezes em cada sintoma para chegar na causa raiz</span></li>
+      <li class="item"><span class="cb"></span><span class="lbl">Identificar quem decide de fato no cliente</span></li>
+      <li class="item"><span class="cb"></span><span class="lbl">Coletar de 2 a 3 evidências concretas (turnover, retrabalho, prazo, reclamação)</span></li>
+      <li class="item"><span class="cb"></span><span class="lbl">Agendar e rodar as conversas com os três líderes usando o roteiro do guia</span></li>
+    </ul>
+    <div class="pronto"><span class="tag">Pronto quando</span><span>tiver a frase única que define o problema central.</span></div>
+  </section>
+
+  <section class="etapa">
+    <div class="etapa-head"><div class="etapa-num">02</div><h2>Matriz De-Para</h2></div>
+    <div class="prazo">Prazo sugerido: 2 a 3 dias após o Discovery</div>
+    <ul class="checklist">
+      <li class="item"><span class="cb"></span><span class="lbl">Organizar os achados das entrevistas em blocos</span></li>
+      <li class="item"><span class="cb"></span><span class="lbl">Preencher a coluna "como é hoje"</span></li>
+      <li class="item"><span class="cb"></span><span class="lbl">Preencher a coluna "como fica com o plano"</span></li>
+      <li class="item"><span class="cb"></span><span class="lbl">Priorizar de 3 a 5 gaps, os que doem mais e têm solução viável</span></li>
+    </ul>
+    <div class="pronto"><span class="tag">Pronto quando</span><span>a Matriz De-Para estiver preenchida e os gaps priorizados.</span></div>
+  </section>
+
+  <section class="etapa">
+    <div class="etapa-head"><div class="etapa-num">03</div><h2>Validação do problema</h2></div>
+    <div class="prazo">Prazo sugerido: antes de escrever a proposta</div>
+    <ul class="checklist">
+      <li class="item"><span class="cb"></span><span class="lbl">Levar a frase do problema e o De-Para para o decisor</span></li>
+      <li class="item"><span class="cb"></span><span class="lbl">Ouvir se o diagnóstico ressoa ("é isso mesmo")</span></li>
+      <li class="item"><span class="cb"></span><span class="lbl">Ajustar o que ele apontar antes de seguir</span></li>
+    </ul>
+    <div class="pronto"><span class="tag">Pronto quando</span><span>o decisor concordar com o diagnóstico.<span class="obs">Essa é a etapa que a maioria pula e não deveria. Se ele concorda com o problema, a venda da solução fica quase automática.</span></span></div>
+  </section>
+
+  <section class="etapa">
+    <div class="etapa-head"><div class="etapa-num">04</div><h2>Construção da proposta</h2></div>
+    <div class="prazo">Prazo sugerido: 3 a 5 dias após a validação</div>
+    <ul class="checklist">
+      <li class="item"><span class="cb"></span><span class="lbl">Montar a proposta nas 5 partes: o que encontramos, por que é problema, o que propomos, o que muda, quando</span></li>
+      <li class="item"><span class="cb"></span><span class="lbl">Organizar as ações nos três horizontes (para agora, curto prazo, estrutural)</span></li>
+      <li class="item"><span class="cb"></span><span class="lbl">Incluir o Método Orbit na parte de desenvolvimento de liderança, se a causa raiz for comportamento dos líderes</span></li>
+      <li class="item"><span class="cb"></span><span class="lbl">Montar o documento com estrutura limpa e identidade visual mínima</span></li>
+    </ul>
+    <div class="pronto"><span class="tag">Pronto quando</span><span>a proposta estiver completa, com framing de decisão e não de teoria.</span></div>
+  </section>
+
+  <section class="etapa">
+    <div class="etapa-head"><div class="etapa-num">05</div><h2>Preparação da venda</h2></div>
+    <div class="prazo">Prazo sugerido: 1 dia antes da apresentação</div>
+    <ul class="checklist">
+      <li class="item"><span class="cb"></span><span class="lbl">Escrever a narrativa de 2 minutos que conecta problema, impacto e solução</span></li>
+      <li class="item"><span class="cb"></span><span class="lbl">Treinar a narrativa em voz alta</span></li>
+      <li class="item"><span class="cb"></span><span class="lbl">Deixar explícito o método que sustentou o plano</span></li>
+      <li class="item"><span class="cb"></span><span class="lbl">Definir o próximo passo concreto caso o decisor aprove</span></li>
+    </ul>
+    <div class="pronto"><span class="tag">Pronto quando</span><span>conseguir contar o problema, o impacto e a solução em 2 minutos, sem ler.</span></div>
+  </section>
+
+</div>
+
+<div class="lembrete">
+  <div class="inner">
+    <div class="kicker">Lembrete final</div>
+    <p>O erro clássico de quem começa é querer entregar a proposta perfeita logo de cara. <b>Valide em camadas: primeiro o problema, depois o De-Para, só então o plano completo.</b></p>
+  </div>
+</div>
+
 <footer>
   Guia construído com a metodologia de Discovery e Design Thinking · identidade <b>CX Presence</b>
 </footer>
+
+<script>
+  (function(){
+    var items = Array.prototype.slice.call(document.querySelectorAll('.item'));
+    var fill = document.getElementById('fill');
+    var pct = document.getElementById('pct');
+    function update(){
+      if(!items.length) return;
+      var done = items.filter(function(i){return i.classList.contains('done')}).length;
+      var p = Math.round((done/items.length)*100);
+      if(fill) fill.style.width = p + '%';
+      if(pct) pct.textContent = p + '%';
+    }
+    items.forEach(function(item){
+      item.addEventListener('click', function(){
+        item.classList.toggle('done');
+        update();
+      });
+    });
+    // nav ativo conforme rolagem
+    var links = Array.prototype.slice.call(document.querySelectorAll('.topnav a'));
+    var guia = document.getElementById('guia');
+    var chk = document.getElementById('checklist');
+    function onScroll(){
+      if(!chk) return;
+      var y = window.scrollY + 120;
+      var alvo = (chk.offsetTop <= y) ? 'checklist' : 'guia';
+      links.forEach(function(l){
+        l.classList.toggle('ativo', l.getAttribute('href') === '#' + alvo);
+      });
+    }
+    window.addEventListener('scroll', onScroll);
+    update(); onScroll();
+  })();
+</script>
 
 </body>
 </html>
